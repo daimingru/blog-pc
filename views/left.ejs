@@ -1,0 +1,31 @@
+<div class="left">
+    <div class="author">
+      <div class="headportrait">
+        <img src="images/headportrait.png" width="100%">
+      </div>
+      <p><%=name%></p>
+      <p>programmer</p>
+    </div>
+    <div>
+      <ul class="menu">
+        <li<% if(flag == 'index'){ %> class="menu_select"<% } %>>
+          <a href="/">
+            <i class="menu_icon glyphicon glyphicon-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li<% if(flag == 'list'){ %> class="menu_select"<% } %>>
+          <a href="/list">
+            <i class="menu_icon glyphicon glyphicon-pencil"></i>
+            <span>Bloglist</span>
+          </a>
+        </li>
+        <li>
+          <a href="/about">
+            <i class="menu_icon glyphicon glyphicon-user"></i>
+            <span>About me</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>

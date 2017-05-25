@@ -1,0 +1,21 @@
+    <div class="title_img">
+      <div class="mask"></div>
+      <div class="logion">
+        <p>有远大抱负的人，不可忽略眼前的工作。</p>
+        <p style="text-align:right;margin-right:50px;"> —— 欧里庇得斯</p>
+      </div>
+      <img src="images/title.jpg" width="100%">
+    </div>
+    <div class="blogcont">
+      <ul>
+        <% for(var i=0;i<article.length;i++){ %>
+        <li>
+          <a class="blog_title" href="/article?id=<%=article[i].id%>"><%=article[i].title%></a>
+          <img src="images/test.jpg" width="80%" class="blogimg">
+          <p class="brief"><%=introduction[i].article.substr(0,200)%>......</p>
+          <p class="timedate"><%=article[i].createtime%></p>
+          <div style="clear:both"></div>
+        </li>
+        <% } %>
+      </ul>
+    </div>

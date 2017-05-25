@@ -1,0 +1,24 @@
+/* 首页导航移动CSS */
+@keyframes leftgo
+{
+from {left:0;}
+to {left:50px;color:#53FEFF;}
+}
+/* 首页右侧title CSS */
+@keyframes titlego
+{
+from {padding-left: 0;}
+to {color:#FF9797;padding-left: 10%;}
+}
+/* 文章移动 CSS */
+@keyframes articlego
+{
+from {left:100%;}
+to {left:23%;}
+}
+
+@keyframes articleback
+{
+from {left:23%;}
+to {left:100%;}
+}
