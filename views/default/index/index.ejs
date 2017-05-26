@@ -1,0 +1,218 @@
+<div class="Frank-img">
+    <div class="Frank-wix">
+        <div>
+            <img src="views/default/index/images/Frank.svg" />
+        </div>
+        <div class="show-code">
+            <div class="m-code">
+                <div class="code-span span1">&lt;code&gt;</div>
+                <div class="code-title">I’M A PROGRAMMER</div>
+                <div class="code-span span2">&lt;&frasl;code&gt;</div>
+            </div>
+            <div class="code-bt">
+            </div>
+        </div>
+        <p class="name">FRANK DAI</p>
+        <p>Front-end developer, Music lovers</p>
+        <img src="views/default/index/images/down-icon.png" class="down" >
+    </div>
+</div>
+<div class="section">
+    <ul>
+        <!--<li>
+            <h2>JS操作cookie并设置失效时间</h2>
+            <p class="info">
+                <span>Posted on 2017-4-18</span>
+                <span class="inblog">In blog</span>
+                <span>Frank Dai</span>
+            </p>
+            <p class="count">越来越多的地方许多逻辑都放在了前端去实现，今天项目中用到了需要在前端设置cookie并30分钟失效，查了一些资料最终解决下面就贴上代码首先是设置cookiefunction SetCookie(cookieName, cookieValue, nDays) {	/* 当前日期 */	var today = new Date();	/* Cookie 过期时间 */	var expire = new......</p>
+            <a href="#" class="readmore">Read more>></a>
+            <div class="bo"></div>
+        </li>-->
+        <% for(var i=0;i<article.length;i++){ %>
+        <li>
+            <a href="/article?id=<%=article[i].id%>" target="_blank">
+                <h2><%=article[i].title%></h2>
+            </a>
+            <p class="info">
+                <span>Posted on <%=article[i].createtime%></span>
+                <span class="inblog">In blog</span>
+                <span><%=article[i].auther%></span>
+            </p>
+            <p class="count"><%-introduction[i].article.substr(0,200)%>......</p>
+            <a href="#" class="readmore">Read more>></a>
+            <div class="bo"></div>
+        </li>
+        <% } %>
+    </ul>
+    <div class="footer">
+        <p>
+            <a href="#">HOME</a>
+            <a href="#">BLOGLIST</a>
+            <a href="#">ABOUT ME</a>
+        </p>
+        <p>Copyright © 2017 Frank Dai</p>
+    </div>
+</div>
+<style>
+.section{
+    width: 100%;
+    min-width: 1280px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 8;
+    opacity: 0;
+    background: #fff;
+    padding-top: 1.27rem;
+    transition: opacity .5s ease-out;
+    font-family:"MicrosoftYaHei";
+}
+.reg .section{
+    position: absolute;
+    top: 100vh;
+}
+.section li {
+    width: 1000px;
+    margin: 0 auto 38px auto;
+    text-align: center;
+}
+.section li h2{
+    font-size:26px;
+    line-height: 40px;
+    font-weight: normal;
+}
+.section li .info{
+    font-size: 12px;
+    line-height: 18px;
+    margin-top: 5px;
+    color: #999;
+    margin-bottom: 37px;
+}
+.section li .info span{
+    height: 18px;
+    display: inline-block;
+    line-height: 18px;
+    vertical-align: middle;
+}
+.section li .info .inblog{
+    margin: 0 8px;
+    padding: 0 10px;
+    height: 12px;
+    line-height: 12px;
+    border-left: 1px solid #999;
+    border-right: 1px solid #999;
+}
+.section li .count{
+    font-size:16px;
+    letter-spacing:0;
+    line-height:30px;
+    word-break:break-all;
+    text-align:left;
+}
+.section li .readmore{
+    display: block;
+    margin: 50px auto 39px auto;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background:#222222;
+    border-radius:2px;
+    font-size:14px;
+    text-align:center;
+}
+.bo{
+    width: 101px;
+    height: 1px;
+    background: #dcdcdc;
+    margin: 0 auto;
+}
+.footer{
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    border-top: 1px solid #dcdcdc;
+    padding: 47px 0 3.5px 0;
+    color:#999999;
+}
+.footer p{
+    margin-bottom: 30px;
+    font-size:14px;
+}
+.footer p a{
+    color:#999999;
+    margin: 0 32.5px;
+}
+</style>
+<style>
+    
+    .Frank-img{
+        text-align: center;
+        padding-top: .95rem;
+        width: 100%;
+        height: 200vh;
+    }
+    .Frank-img .Frank-wix{
+        position: relative;
+        z-index: 10;
+        background: #f8f8f8;
+    }
+    .Frank-img > div img{
+        width: 1.76rem;
+        /*display:none*/
+    }
+    .Frank-img p{
+        font-size: .24rem;
+        line-height: 100%;
+        margin-top: .14rem;
+    }
+    .Frank-img .show-code{
+        display: inline-block;
+        width: 3.11rem;
+        height: 1.76rem;
+        border: 0.05rem solid #444;
+        background: #ececec;
+        border-radius: .15rem;
+        overflow: hidden;
+        margin-top: -.18rem;
+        position: relative;
+        margin-bottom: 26px;
+    }
+    .Frank-img .m-code{
+        height: 1.62rem;
+        font-size: .14rem;
+        padding: .12rem .18rem;
+        box-sizing: border-box;
+    }
+    .Frank-img .code-span{
+        font-family: 'PingFangSC-Regular';
+    }
+    .Frank-img .span1{
+        text-align: left;
+    }
+    .Frank-img .span2{
+        text-align: right;
+    }
+    .Frank-img .code-title{
+        padding: .41rem 0;
+    }
+    .Frank-img .code-bt{
+        height: .14rem;
+        background: #d6d6d6;
+    }
+    .Frank-img .name{
+        margin-top: 0.01rem;
+        font-weight: 600;
+    }
+    .Frank-img .down{
+        width: .35rem;
+        margin-top: .25rem;
+    }
+    .show{
+        display: block;
+    }
+</style>
+<script>
+</script>

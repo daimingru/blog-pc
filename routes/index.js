@@ -1,4 +1,4 @@
-var comm = require('.././config.js');
+var comm = require('../config/config.js');
 var path = require('path');
 var bodyParser = require("body-parser"); //用于解析客户端请求的body中的内容,内部使用JSON编码处理,url编码处理以及对于文件的上传处理.
 var moment = require("moment") //处理时间格式
@@ -8,8 +8,8 @@ var conn = comm.conn;
 conn.connect();
 module.exports.routes = function(app,express){
 
-  app.use(express.static('./public'));
-  app.set('views','./views')
+  app.use(express.static('./'));
+  app.set('views','./views/default')
   app.set('view engine','ejs')//ejs模板
   app.use(bodyParser.urlencoded({ extended: false }));//用于post请求 
   app.use(bodyParser.urlencoded({
