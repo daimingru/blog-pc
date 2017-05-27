@@ -19,17 +19,6 @@
 </div>
 <div class="section">
     <ul>
-        <!--<li>
-            <h2>JS操作cookie并设置失效时间</h2>
-            <p class="info">
-                <span>Posted on 2017-4-18</span>
-                <span class="inblog">In blog</span>
-                <span>Frank Dai</span>
-            </p>
-            <p class="count">越来越多的地方许多逻辑都放在了前端去实现，今天项目中用到了需要在前端设置cookie并30分钟失效，查了一些资料最终解决下面就贴上代码首先是设置cookiefunction SetCookie(cookieName, cookieValue, nDays) {	/* 当前日期 */	var today = new Date();	/* Cookie 过期时间 */	var expire = new......</p>
-            <a href="#" class="readmore">Read more>></a>
-            <div class="bo"></div>
-        </li>-->
         <% for(var i=0;i<article.length;i++){ %>
         <li>
             <a href="/article?id=<%=article[i].id%>" target="_blank">
@@ -105,6 +94,7 @@
     border-right: 1px solid #999;
 }
 .section li .count{
+    text-indent: 32px;
     font-size:16px;
     letter-spacing:0;
     line-height:30px;
