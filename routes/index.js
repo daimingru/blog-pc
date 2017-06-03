@@ -9,9 +9,9 @@ conn.connect();
 module.exports.routes = function(app,express){
 
   app.use(express.static('./'));
-  app.set('views','./views/default')
+  app.set('views', __dirname + '/views/default')
   app.set('view engine','ejs')//ejs模板
-  app.use(bodyParser.urlencoded({ extended: false }));//用于post请求 
+  app.use(bodyParser.urlencoded({ extended: false }));//用于post请求
   app.use(bodyParser.urlencoded({
     extended: true
   }));
@@ -24,13 +24,13 @@ module.exports.routes = function(app,express){
           var imgname = req.ueditor.filename;
           var img_url = '../upload/images/';
           //你只要输入要保存的地址 。保存操作交给ueditor来做
-          res.ue_up(img_url); 
+          res.ue_up(img_url);
       }
       //  客户端发起图片列表请求
       else if (req.query.action === 'listimage') {
           var dir_url = '/images/ueditor/';
           // 客户端会列出 dir_url 目录下的所有图片
-          res.ue_list(dir_url); 
+          res.ue_list(dir_url);
       }
       // 客户端发起其它请求
       else {
@@ -59,12 +59,12 @@ module.exports.routes = function(app,express){
     listaction(req,res,conn);
   })
 
-  //login 
+  //login
   app.get('/login',function(req,res){
     res.render('login',{});
   })
-  
-  app.get('/article', function(req, res){  
+
+  app.get('/article', function(req, res){
     var article_id = req.query.id;
     conn.query('SELECT * FROM article where id=' + article_id, function(err, rows, fields) {
     if (err) throw err;
@@ -79,7 +79,7 @@ module.exports.routes = function(app,express){
         })
       });
     });
-  });  
+  });
 
   //post login
   app.post('/login',function(req,res){
@@ -100,7 +100,7 @@ module.exports.routes = function(app,express){
     });
   });
 
-  //admin 
+  //admin
   app.get('/admin',function(req,res){
     if(isSession(req,res)){
       conn.query('select name from user',function(err,rows,fields){
@@ -114,7 +114,7 @@ module.exports.routes = function(app,express){
     }
   })
 
-  //admin 
+  //admin
   app.get('/write',function(req,res){
     if(isSession(req,res)){
       conn.query('select name from user where id = \'' + req.cookies.userid + '\'',function(err,rows,fields){
@@ -128,7 +128,7 @@ module.exports.routes = function(app,express){
     }
   })
 
-  //mylist 
+  //mylist
   app.get('/mylist',function(req,res){
     var _title = '博客视界-文章列表';
     conn.query('SELECT * FROM article where autherid =\'' + req.cookies.userid + '\' order by id desc limit 0,10', function(err, rows, fields) {
@@ -148,7 +148,7 @@ module.exports.routes = function(app,express){
     });
   })
 
-    //bglist 
+    //bglist
   app.get('/bglist',function(req,res){
     var _title = '文章列表';
     conn.query('SELECT * FROM article order by id desc limit 0,10', function(err, rows, fields) {
@@ -229,7 +229,7 @@ function showError(err){
     alert(err);
 }
 
-//遍历数组时间 
+//遍历数组时间
 function forTimearry(rows){
     for(var i = 0;i<rows.length;i++){
         rows[i].createtime = moment(rows[i].createtime).format("YYYY-MM-DD");
@@ -242,13 +242,13 @@ function forTimearry(rows){
 
 Date.prototype.Format = function (fmt) {
     var o = {
-        "M+": this.getMonth() + 1, //月份 
-        "d+": this.getDate(), //日 
-        "h+": this.getHours(), //小时 
-        "m+": this.getMinutes(), //分 
-        "s+": this.getSeconds(), //秒 
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-        "S": this.getMilliseconds() //毫秒 
+        "M+": this.getMonth() + 1, //月份
+        "d+": this.getDate(), //日
+        "h+": this.getHours(), //小时
+        "m+": this.getMinutes(), //分
+        "s+": this.getSeconds(), //秒
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+        "S": this.getMilliseconds() //毫秒
     };
     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
     for (var k in o)
@@ -258,7 +258,7 @@ Date.prototype.Format = function (fmt) {
 
 //匹配html标签
 function delHtmlTag(str)
-{   
+{
     var array = str;
     for(var i = 0;i<array.length;i++){
         array[i].article = array[i].article.replace(/<[^>]+>/g,"");

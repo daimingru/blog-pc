@@ -7,10 +7,9 @@
   <meta name="keywords" content="博客视界-blog-world,博客世界,博客,视界,世界,个人博客,技术分享,博客分享" />
   <meta name="description" content="博客视界-blog-world致力于打造简介，大方的博客空间，在这里可以随时记录生活琐事，技术心得等等。" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-  <link rel="stylesheet" type="text/css" href="public/css/base.css">
-  <script type="text/javascript" src="public/js/jquery.min.js"></script>
-  <script type="text/javascript" src="public/js/public.js"></script>
-  <!--<script type="text/javascript" src="public/js/dp.js"></script>-->
+  <link rel="stylesheet" type="text/css" href="/public/css/base.css">
+  <script type="text/javascript" src="/public/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/js/public.js"></script>
   <script>
         window['adaptive'].desinWidth = 1280;
         window['adaptive'].baseFont = 28;
@@ -21,8 +20,9 @@
 <body>
   <div class="Frank">
     <% include common/header/index.ejs %>
-    <% include index/index.ejs %>
+    <% include article/article.ejs %>
+    <% include common/footer/index.ejs %>
   </div>
-  <script type="text/javascript" src="views/default/index/js/index.js"></script>
+  <script type="text/javascript" src="/views/default/article/js/article.js"></script>
 </body>
 </html>

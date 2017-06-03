@@ -30,19 +30,12 @@
                 <span><%=article[i].auther%></span>
             </p>
             <p class="count"><%-introduction[i].article.substr(0,200)%>......</p>
-            <a href="#" class="readmore">Read more>></a>
+            <a href="/<%=auther%>/list?id=<%=article[i].id%>" class="readmore">Read more>></a>
             <div class="bo"></div>
         </li>
         <% } %>
     </ul>
-    <div class="footer">
-        <p>
-            <a href="#">HOME</a>
-            <a href="#">BLOGLIST</a>
-            <a href="#">ABOUT ME</a>
-        </p>
-        <p>Copyright © 2017 Frank Dai</p>
-    </div>
+    <% include ../common/footer/index.ejs %>
 </div>
 <style>
 .section{
@@ -137,7 +130,7 @@
 }
 </style>
 <style>
-    
+
     .Frank-img{
         text-align: center;
         padding-top: .95rem;

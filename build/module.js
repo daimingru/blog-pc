@@ -1,10 +1,12 @@
 var comm = require('../config/config.js');
+var asyn = require('async');
 var moment = require("moment") //处理时间格式
 module.exports.main = {
 
     init: function(){
       this.global = {
-        title: '博客视界-blog-world'
+        title: '博客视界-blog-world',
+        sectitle:'博客列表-blog-world'
       }
       this.connectDatabase();
     },
@@ -53,6 +55,103 @@ module.exports.main = {
       });
     },
 
+    //用户首页
+    getUserIndex: function(req,res){
+      var _self = this;
+      var Sql = [
+        'SELECT * FROM article where autherid = ' + req.params.id + ' order by id desc limit 0,10',
+        'SELECT name FROM user where id=' + req.params.id
+      ]
+      var data = [];
+      var stad = asyn.eachSeries(Sql, function (item, callback) {
+          _self.conn.query(item, function(err, res) {
+            if(err) {
+              callback(err);
+            } else {
+              data.push(res);
+              callback();
+            }
+          });
+      }, function (err) {
+        if(err)
+            console.log("err: " + err);
+        else
+            res.render('layout',{
+              article:_self.delHtmlTag(_self.forTimearry(data[0])),
+              introduction:_self.delHtmlTag(_self.forTimearry(data[0])),
+              name:data[0][0].name,
+              title:_self.global.title,
+              auther:req.params.id,
+              flag:'index'
+            })
+      });
+
+    },
+
+    //用户文章列表页
+    getUserList: function(req,res){
+      var _self = this;
+      var Sql = [
+        'SELECT * FROM article where autherid = ' + req.params.id + ' order by id desc limit 0,10'
+      ]
+      var data = [];
+      var stad = asyn.eachSeries(Sql, function (item, callback) {
+          _self.conn.query(item, function(err, res) {
+            if(err) {
+              callback(err);
+            } else {
+              data.push(res);
+              callback();
+            }
+          });
+      }, function (err) {
+        if(err)
+            console.log("err: " + err);
+        else
+            res.render('list',{
+              article:_self.delHtmlTag(_self.forTimearry(data[0])),
+              introduction:_self.delHtmlTag(_self.forTimearry(data[0])),
+              name:data[0][0].name,
+              title:_self.global.title,
+              auther:req.params.id,
+              flag:'list'
+            })
+      });
+
+    },
+
+    //用户文章详情页
+    getUserArticle: function(req,res){
+      var _self = this;
+      var Sql = [
+        'SELECT * FROM article where autherid = ' + req.params.id + ' and id = ' + req.query.id
+      ]
+      var data = [];
+      var stad = asyn.eachSeries(Sql, function (item, callback) {
+          _self.conn.query(item, function(err, res) {
+            if(err) {
+              callback(err);
+            } else {
+              data.push(res);
+              callback();
+            }
+          });
+      }, function (err) {
+        if(err)
+            console.log("err: " + err);
+        else
+            res.render('article',{
+              article:_self.forTimearry(data[0]),
+              introduction:_self.forTimearry(data[0]),
+              name:data[0][0].name,
+              title:_self.global.title,
+              auther:req.params.id,
+              flag:'article'
+            })
+      });
+
+    },
+
     //列表页
     getList: function(){
       var _title = '博客视界-文章列表';
@@ -72,6 +171,11 @@ module.exports.main = {
         });
       });
     },
+
+    //返回数据
+    callback: function(data){
+      return data;
+    }
 
 }
 

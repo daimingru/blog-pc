@@ -1,0 +1,102 @@
+<div class="Frank-list">
+  <div class="list-left">
+    <ul>
+
+      <% for(var i=0;i<article.length;i++){ %>
+      <li>
+        <h2><%=article[i].title%></h2>
+        <h6><span>Posted on <%=article[i].createtime%></span><span><%=article[i].auther%></span></h6>
+        <p><%-introduction[i].article.substr(0,200)%>......</p>
+        <a href="/<%=auther%>/article?id=<%=article[i].id%>" class="readmore">Read more>></a>
+      </li>
+      <% } %>
+
+    </ul>
+  </div>
+  <div class="list-right">
+    <a href="#">文章分类一</a>
+    <a href="#">文章分类二</a>
+    <a href="#">文章分类三</a>
+    <a href="#">文章分类四</a>
+    <a href="#">文章分类五</a>
+  </div>
+</div>
+
+<style>
+.Frank-list{
+  padding-top: 1.78rem;
+  width: 1000px;
+  margin:0 auto;
+  font-family:ArialMT;
+  overflow: hidden;
+}
+.list-left{
+  width: 760px;
+  float: left;
+  margin-right: 90px;
+}
+.list-left h2{
+  font-family:Arial-BoldMT;
+  font-size:24px;
+  color:#444444;
+  height: 27px;
+  line-height: 27px;
+}
+.list-left h6{
+  font-size:14px;
+  color:#999999;
+  margin: 10px 0 30px 0;
+  height: 16px;
+  line-height: 16px;
+  font-weight: normal;
+}
+.list-left h6 span{
+  margin-right: 13px;
+}
+.list-left p{
+  font-size:18px;
+  color:#444444;
+  line-height:37px;
+  margin-bottom: 29px;
+}
+.list-left li{
+  margin-bottom: 59px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.list-left .readmore{
+  display: block;
+  width: 140px;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  background:#222222;
+  border-radius:2px;
+  font-size:14px;
+  text-align:center;
+  margin-bottom: 60px;
+}
+.list-right{
+  width: 150px;
+  float: left;
+}
+.list-right a{
+  font-family:ArialMT;
+  display: block;
+  height: 27px;
+  line-height: 27px;
+  position: relative;
+  font-size:20px;
+  color:#999999;
+  margin-bottom: 35px;
+  font-weight: normal;
+  transition: all .2s ease-in-out;
+}
+.list-right a:hover{
+  font-family:Arial-BoldMT;
+  font-size:24px;
+  color:#444444;
+  font-weight: 600;
+}
+</style>
+<script>
+</script>

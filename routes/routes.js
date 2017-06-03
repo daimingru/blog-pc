@@ -3,15 +3,11 @@ var bodyParser = require("body-parser"); //用于解析客户端请求的body中
 var ueditor = require("ueditor");//百度富文本编辑器
 var cookieParser = require('cookie-parser');//cookie
 var m = require('../build/module')
-module.exports.routes = function(app,express){
 
-  app.use(express.static('./'));
-  app.set('views','./views/default')
+module.exports.routes = function(app,express){
+  app.set('views', './views/default')
   app.set('view engine','ejs')//ejs模板
   app.use(bodyParser.urlencoded({ extended: false }));//用于post请求
-  app.use(bodyParser.urlencoded({
-    extended: true
-  }));
   app.use(bodyParser.json());
   app.use(cookieParser());//cookie
   app.use("ueditor/ueditor", ueditor(path.join(__dirname, 'public'), function(req, res, next) {
@@ -44,16 +40,34 @@ module.exports.routes = function(app,express){
 
 
 
+  //首页
   app.get('/',function(req,res){
     m.main.getIndex(req,res);
   })
 
+  //首页
   app.get('/index',function(req,res){
     m.main.getIndex(req,res);
   })
 
-  app.get('/list',function(req,res){
-    m.main.getList(req,res);
+  //用户首页
+  app.get('/:id',function(req,res){
+    m.main.getUserIndex(req,res)
+  })
+
+  //用户首页
+  app.get('/:id/index',function(req,res){
+    m.main.getUserIndex(req,res)
+  })
+
+  //用户列表
+  app.get('/:id/list',function(req,res){
+    m.main.getUserList(req,res)
+  })
+
+  //用户文章详情
+  app.get('/:id/article',function(req,res){
+    m.main.getUserArticle(req,res)
   })
 
   //login
