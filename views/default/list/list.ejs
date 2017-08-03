@@ -6,7 +6,7 @@
       <li>
         <h2><%=article[i].title%></h2>
         <h6><span>Posted on <%=article[i].createtime%></span><span><%=article[i].auther%></span></h6>
-        <p><%-introduction[i].article.substr(0,200)%>......</p>
+        <p><%-introduction[i].article.substr(0,100)%>......</p>
         <a href="/<%=auther%>/article?id=<%=article[i].id%>" class="readmore">Read more>></a>
       </li>
       <% } %>
